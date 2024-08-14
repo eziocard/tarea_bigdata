@@ -2,7 +2,7 @@ import pandas as pd
 
 #from IPython.display import display
 
-class Bdd():
+class DataAnalysis():
     def __init__(self,nombre):
         self.nombre = nombre
         self.df = pd.read_csv(self.nombre)

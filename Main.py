@@ -1,25 +1,42 @@
-from Bdd import Bdd
+from DataAnalysis import DataAnalysis
 import streamlit as st
+from datetime import datetime
 
 
 
-tabla = Bdd('synthetic_data_usd.csv')
+tabla = DataAnalysis('synthetic_data_usd.csv')
  
+agregar = {}
 #tabla.get_tabla()
 #print(tabla.get_name_columnas()[0])
 #tabla.set_table()
+tabs_1 = st.tabs(['Mostras base de datos', 'Graficos'])
 
-titulo = st.title('Big Data Actividad Nro 2')
-st.write(tabla.get_Df())
-form = st.form(key='formulario',clear_on_submit=True)
-agregar = {}
+with tabs_1[0]:
+    st.title('Big Data Actividad Nro 2')
+    st.write(tabla.get_Df())
 
-for col in range(len(tabla.get_name_columnas()) - 1):
-    agregar[tabla.get_name_columnas()[col+1]] = form.text_input(f'Ingresar {tabla.get_name_columnas()[col+1]}:')
+with tabs_1[1]:
+    st.write('Graficos')
 
-submit_button = form.form_submit_button("Ingresar")
+with st.sidebar:
+    tabs_2 = st.tabs(['Ingresar datos', 'Herramientas'])
+    with tabs_2[0]:
+        st.title("Ingresar Datos")
+        form = st.form(key='formulario',clear_on_submit=True)
+        with form:
+            agregar['Name'] = form.text_input('Ingresar Nombre:')
+            agregar['Age'] = form.number_input('Ingresar Edad:',min_value= 0,max_value= 120,value=0)
+            agregar['Salary'] = form.number_input('Ingresar Salario:',min_value= 0,value=0)
+            agregar['Department'] = form.text_input('Ingresar Departamento:')
+            agregar['Join_Date'] = form.date_input('Ingresar la fecha de ingreso a la empresa',max_value=datetime.today().date())
+            agregar['Location'] = form.text_input('Ingresar Ubicacion:')
 
-if submit_button:
-    st.write("Datos ingresados:")
-    st.write(agregar)
-    tabla.set_table(agregar)
+        submit_button = form.form_submit_button("Ingresar")
+
+        if submit_button:
+            st.write("Datos ingresados con exito!")
+            #st.write(agregar)
+            tabla.set_table(agregar)
+    with tabs_2[1]:
+        st.title("Herramientas")
