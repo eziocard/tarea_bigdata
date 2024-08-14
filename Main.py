@@ -40,3 +40,11 @@ with st.sidebar:
             tabla.set_table(agregar)
     with tabs_2[1]:
         st.title("Herramientas")
+        st.write("Eliminar fila")
+        form_h = st.form(key='formulario_eliminar',clear_on_submit=True)
+        with form_h:
+            input_indice = form_h.number_input('Ingresar Id:',min_value= 0,value=0)
+            submit_button_borrar = form_h.form_submit_button("Borrar")
+            if submit_button_borrar:
+                tabla.set_table_borrar(input_indice)
+                st.write("Fila eliminada.")
