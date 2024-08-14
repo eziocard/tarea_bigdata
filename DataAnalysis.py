@@ -14,7 +14,7 @@ class DataAnalysis():
         self.df['Department'] = self.df['Department'].astype(str)  
         self.df['Join_Date'] = self.df['Join_Date'].astype(str)  
         self.df['Location'] = self.df['Location'].astype(str)
-            
+    
         return self.df
 
     def get_tabla(self):
@@ -33,5 +33,6 @@ class DataAnalysis():
         self.df.to_csv(self.nombre, index=False)
             
     def set_table_borrar(self,indice):
-        self.df = self.df.drop(indice)
+        fila = self.df.loc[self.df['ID'] == indice].index
+        self.df = self.df.drop(fila)
         self.df.to_csv(self.nombre, index=False)

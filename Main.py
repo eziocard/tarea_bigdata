@@ -15,6 +15,7 @@ tabs_1 = st.tabs(['Mostras base de datos', 'Graficos'])
 with tabs_1[0]:
     st.title('Big Data Actividad Nro 2')
     st.write(tabla.get_Df())
+    
 
 with tabs_1[1]:
     st.write('Graficos')
