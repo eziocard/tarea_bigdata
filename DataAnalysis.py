@@ -5,10 +5,10 @@ import pandas as pd
 class DataAnalysis():
     def __init__(self,nombre):
         self.nombre = nombre
-        self.df = pd.read_csv(self.nombre)
+        self.df = pd.read_csv(self.nombre).fillna('No Especificado')
 
     def get_Df(self):
-        return pd.read_csv(self.nombre)
+        return self.df
 
     def get_tabla(self):
         print(self.df.tail())
