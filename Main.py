@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 tabla = DataAnalysis('synthetic_data_usd.csv')
+st.set_page_config(page_title="Tarea base de datos")
  
 agregar = {}
 #tabla.get_tabla()
@@ -50,3 +51,23 @@ with st.sidebar:
             if submit_button_borrar:
                 tabla.set_table_borrar(input_indice)
                 st.write("Fila eliminada.")
+
+        st.write("Modificar")
+        form_m = st.form(key='formulario_modificar',clear_on_submit=True)
+        with form_m:
+            id = form_m.number_input('Ingresar ID:',min_value= 0,value=0)
+            name = form_m.text_input('Ingresar Nombre:')
+            age = form_m.number_input('Ingresar Edad:',min_value= 0,max_value= 120,value=0)
+            salary = form_m.number_input('Ingresar Salario:',min_value= 0,value=0)
+            department = form_m.text_input('Ingresar Departamento:')
+            join_date = form_m.date_input('Ingresar la fecha de ingreso a la empresa',max_value=datetime.today().date())
+            location = form_m.text_input('Ingresar Ubicacion:')
+            submit_button_modificar = form_m.form_submit_button("Modificar")
+            if submit_button_modificar:
+                if (not name or not department or not location or id == 0 or age == 0 or salary == 0 or join_date == ""):
+                    st.write("falta ingresar datos")
+                else:
+                    tabla.set_table_modificar(id,name,age,salary,department,join_date,location)
+                    st.write("Fila Modificada.")
+
+

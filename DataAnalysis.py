@@ -34,9 +34,19 @@ class DataAnalysis():
         self.df = pd.concat([self.df, agregar], ignore_index=True)
         self.df.to_csv(self.nombre, index=False)
             
-    def set_table_borrar(self,indice):
-        fila = self.df.loc[self.df['ID'] == indice].index
+    def set_table_borrar(self,id):
+        fila = self.df.loc[self.df['ID'] == id].index
         self.df = self.df.drop(fila)
         self.df.to_csv(self.nombre, index=False)
 
-   # def set_table_modificar(self,id,name,age,salary,department,join_date,location):
+    def set_table_modificar(self,id,name,age,salary,department,join_date,location):
+        fila = self.df.loc[self.df['ID'] == id].index
+        self.df.iloc[fila, 1] = name
+        self.df.iloc[fila, 2] = age
+        self.df.iloc[fila, 3] = salary
+        self.df.iloc[fila, 4] = department
+        self.df.iloc[fila, 5] = join_date
+        self.df.iloc[fila, 6] = location
+        self.df.to_csv(self.nombre, index=False)
+
+        
