@@ -6,6 +6,7 @@ class DataAnalysis():
     def __init__(self,nombre):
         self.nombre = nombre
         self.df = pd.read_csv(self.nombre).fillna('No Especificado')
+        self.df.set_index('ID', inplace=True)
 
     def get_Df(self):
         self.df['Name'] = self.df['Name'].astype(str)
@@ -38,4 +39,4 @@ class DataAnalysis():
         self.df = self.df.drop(fila)
         self.df.to_csv(self.nombre, index=False)
 
-    def set_table_modificar(self,id,name,age,salary,department,join_date,location):
+   # def set_table_modificar(self,id,name,age,salary,department,join_date,location):
