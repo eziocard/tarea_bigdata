@@ -49,4 +49,8 @@ class DataAnalysis():
         self.df.iloc[fila, 6] = location
         self.df.to_csv(self.nombre, index=False)
 
-        
+    def get_describe_age(self):
+        return self.df['Age'].describe()
+    def get_describe_salary(self):
+        return self.df['Salary'].describe()
+

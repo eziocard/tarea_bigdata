@@ -11,7 +11,7 @@ agregar = {}
 #tabla.get_tabla()
 #print(tabla.get_name_columnas()[0])
 #tabla.set_table()
-tabs_1 = st.tabs(['Mostras base de datos', 'Graficos'])
+tabs_1 = st.tabs(['Mostras base de datos', 'Analisis de datos'])
 
 with tabs_1[0]:
     st.title('Big Data Actividad Nro 2')
@@ -20,7 +20,14 @@ with tabs_1[0]:
     
 
 with tabs_1[1]:
-    st.write('Graficos')
+    st.write('Analisis de Datos')
+    col1,col2 =st.columns(2)
+    with col1:
+        st.write('Edad')
+        st.write(tabla.get_describe_age())
+    with col2:
+        st.write('Salario')
+        st.write(tabla.get_describe_salary())
 
 with st.sidebar:
     tabs_2 = st.tabs(['Ingresar datos', 'Herramientas'])
