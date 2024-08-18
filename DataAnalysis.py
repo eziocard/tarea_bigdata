@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 #from IPython.display import display
 
@@ -6,13 +8,17 @@ class DataAnalysis():
     def __init__(self,nombre):
         self.nombre = nombre
         self.df = pd.read_csv(self.nombre).fillna('No Especificado')
+       
         
 
     def get_Df(self):
         self.df['Name'] = self.df['Name'].astype(str)
         self.df['Age'] = pd.to_numeric(self.df['Age'], errors='coerce').fillna(0).astype(int)  
-        self.df['Salary'] = pd.to_numeric(self.df['Salary'], errors='coerce').fillna(0).astype(int)  
+        self.df['Salary'] = pd.to_numeric(self.df['Salary'], errors='coerce')
+        mean_salary = self.get_mean('Salary')
+        self.df['Salary'] = self.df['Salary'].fillna(mean_salary).astype(int)
         self.df['Department'] = self.df['Department'].astype(str)  
+        self.df['Join_Date'] = pd.to_datetime(self.df['Join_Date'],format = 'mixed',yearfirst = True)
         self.df['Join_Date'] = self.df['Join_Date'].astype(str)  
         self.df['Location'] = self.df['Location'].astype(str)
        
@@ -54,3 +60,5 @@ class DataAnalysis():
     def get_describe_salary(self):
         return self.df['Salary'].describe()
 
+    def get_mean(self,nombre):
+        return self.df[nombre].mean()
