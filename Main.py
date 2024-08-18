@@ -6,7 +6,6 @@ from datetime import datetime
 
 tabla = DataAnalysis('synthetic_data_usd.csv')
 st.set_page_config(page_title="Tarea base de datos")
- 
 agregar = {}
 #tabla.get_tabla()
 #print(tabla.get_name_columnas()[0])
