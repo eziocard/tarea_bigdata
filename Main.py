@@ -27,11 +27,8 @@ with tabs_1[1]:
         st.write('Age')
         st.write(tabla.get_describe('Age'))
         st.dataframe(tabla.get_moda('Age'))
-        
-
         tabla.get_graficos('Age')
 
-    
     with col2:
         st.write('Salary')
         st.write(tabla.get_describe('Salary'))

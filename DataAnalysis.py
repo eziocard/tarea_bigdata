@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#from IPython.display import display
+
 
 class DataAnalysis():
     def __init__(self,nombre):
@@ -34,9 +34,6 @@ class DataAnalysis():
     
         return self.df
 
-    def get_tabla(self):
-        print(self.df.tail())
-
     def get_name_columnas(self):       
         return self.df.columns.values
 
@@ -64,8 +61,7 @@ class DataAnalysis():
         self.df.iloc[fila, 6] = location
         self.df.to_csv(self.nombre, index=False)
 
-    def get_describe(self,nombre):
-        
+    def get_describe(self,nombre):   
         return self.df[nombre].describe()
     def get_moda(self,nombre):
         moda = self.df[nombre].mode()  
