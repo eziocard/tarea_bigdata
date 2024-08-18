@@ -72,7 +72,7 @@ with st.sidebar:
             submit_button_modificar = form_m.form_submit_button("Modificar")
             if submit_button_modificar:
                 if (not name or not department or not location or id == 0 or age == 0 or salary == 0 or join_date == ""):
-                    st.write("falta ingresar datos")
+                    st.warning("Por favor ingresa el ID del préstamo")
                 else:
                     tabla.set_table_modificar(id,name,age,salary,department,join_date,location)
                     st.write("Fila Modificada.")
