@@ -1,6 +1,8 @@
 from DataAnalysis import DataAnalysis
 import streamlit as st
 from datetime import datetime
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 
@@ -22,12 +24,20 @@ with tabs_1[1]:
     st.write('Analisis de Datos')
     col1,col2 =st.columns(2)
     with col1:
-        st.write('Edad')
-        st.write(tabla.get_describe_age())
-    with col2:
-        st.write('Salario')
-        st.write(tabla.get_describe_salary())
+        st.write('Age')
+        st.write(tabla.get_describe('Age'))
+        st.dataframe(tabla.get_moda('Age'))
+        
 
+        tabla.get_graficos('Age')
+
+    
+    with col2:
+        st.write('Salary')
+        st.write(tabla.get_describe('Salary'))
+        st.dataframe(tabla.get_moda('Salary'))
+        tabla.get_graficos('Salary')
+        
 with st.sidebar:
     tabs_2 = st.tabs(['Ingresar datos', 'Herramientas'])
     with tabs_2[0]:
