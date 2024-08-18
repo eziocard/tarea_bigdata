@@ -6,6 +6,7 @@ import seaborn as sns
 
 
 
+
 tabla = DataAnalysis('synthetic_data_usd.csv')
 st.set_page_config(page_title="Tarea base de datos")
 agregar = {}
@@ -28,6 +29,8 @@ with tabs_1[1]:
         st.write(tabla.get_describe('Age'))
         st.dataframe(tabla.get_moda('Age'))
         tabla.get_graficos('Age')
+ 
+
 
     with col2:
         st.write('Salary')
@@ -35,6 +38,7 @@ with tabs_1[1]:
         st.dataframe(tabla.get_moda('Salary'))
         tabla.get_graficos('Salary')
         
+
 with st.sidebar:
     tabs_2 = st.tabs(['Ingresar datos', 'Herramientas'])
     with tabs_2[0]:
@@ -83,4 +87,5 @@ with st.sidebar:
                     tabla.set_table_modificar(id,name,age,salary,department,join_date,location)
                     st.write("Fila Modificada.")
 
+    
 

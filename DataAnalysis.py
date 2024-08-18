@@ -5,6 +5,7 @@ import seaborn as sns
 
 
 
+
 class DataAnalysis():
     def __init__(self,nombre):
         self.nombre = nombre
@@ -26,8 +27,7 @@ class DataAnalysis():
 
         self.df['Department'] = self.df['Department'].astype(str)  
 
-        self.df['Join_Date'] = pd.to_datetime(self.df['Join_Date'],format = 'mixed',yearfirst = True)
-        self.df['Join_Date'] = self.df['Join_Date'].astype(str)  
+        self.df['Join_Date'] = pd.to_datetime(self.df['Join_Date'],format = 'mixed',yearfirst = True) 
 
         self.df['Location'] = self.df['Location'].astype(str)
        
@@ -92,3 +92,5 @@ class DataAnalysis():
         sns.boxplot(x=self.get_column(nombre))
         plt.title( plt.title('f{nombre} Distribucion'))
         st.pyplot(fig)
+   
+   
