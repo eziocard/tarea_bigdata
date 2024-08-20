@@ -9,15 +9,17 @@ import seaborn as sns
 
 tabla = DataAnalysis('synthetic_data_usd.csv')
 st.set_page_config(page_title="Tarea base de datos")
+
 agregar = {}
 #tabla.get_tabla()
 #print(tabla.get_name_columnas()[0])
 #tabla.set_table()
-tabs_1 = st.tabs(['Mostras base de datos', 'Analisis de datos'])
+tabs_1 = st.tabs(['Mostras base de datos', 'Analisis de datos','Analisis de Series Temporales','Grafico Heatmap'])
 
 with tabs_1[0]:
     st.title('Big Data Actividad Nro 2')
     st.dataframe(tabla.get_Df().set_index("ID"))
+
 
     
 
@@ -28,7 +30,8 @@ with tabs_1[1]:
         st.write('Age')
         st.write(tabla.get_describe('Age'))
         st.dataframe(tabla.get_moda('Age'))
-        tabla.get_graficos('Age')
+        tabla.get_graf_hisplot('Age')
+        tabla.get_graf_boxplot('Age')
  
 
 
@@ -36,9 +39,15 @@ with tabs_1[1]:
         st.write('Salary')
         st.write(tabla.get_describe('Salary'))
         st.dataframe(tabla.get_moda('Salary'))
-        tabla.get_graficos('Salary')
+        tabla.get_graf_hisplot('Salary')
+        tabla.get_graf_boxplot('Salary')
         
-
+with tabs_1[2]:
+    st.write("Cantidad de personas ingresadas por año")
+    dates = tabla.get_datetime()
+    tabla.get_graf_datetime()
+with tabs_1[3]:
+    tabla.get_corr_heatmap()
 with st.sidebar:
     tabs_2 = st.tabs(['Ingresar datos', 'Herramientas'])
     with tabs_2[0]:
