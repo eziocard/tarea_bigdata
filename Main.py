@@ -14,7 +14,7 @@ agregar = {}
 #tabla.get_tabla()
 #print(tabla.get_name_columnas()[0])
 #tabla.set_table()
-tabs_1 = st.tabs(['Mostras base de datos', 'Analisis de datos','Analisis de Series Temporales','Grafico Heatmap','Grafico Scatterplot'])
+tabs_1 = st.tabs(['Mostras base de datos', 'Analisis de datos','Analisis de Series Temporales','Grafico Heatmap','Grafico Scatterplot','Grafico Pairplot'])
 
 with tabs_1[0]:
     st.title('Big Data Actividad Nro 2')
@@ -51,6 +51,10 @@ with tabs_1[3]:
 with tabs_1[4]:
     tabla.get_scatterplot("Join_Date", "Salary")
     tabla.get_scatterplot("Join_Date", "Age")
+with tabs_1[5]:
+    st.title("Grafico Pairplot")
+    tabla.get_pairplot()
+
 with st.sidebar:
     tabs_2 = st.tabs(['Ingresar datos', 'Herramientas'])
     with tabs_2[0]:

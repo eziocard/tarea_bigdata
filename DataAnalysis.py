@@ -126,3 +126,8 @@ class DataAnalysis():
         plt.xlabel(col1)
         plt.ylabel(col2)
         st.pyplot(plt)
+
+    def get_pairplot(self):
+        df_number = self.df.select_dtypes(include=[np.number, 'datetime']).drop('ID', axis=1)
+        sns.pairplot(df_number)
+        st.pyplot(plt)
