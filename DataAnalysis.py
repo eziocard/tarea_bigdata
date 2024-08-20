@@ -117,3 +117,12 @@ class DataAnalysis():
         plt.figure(figsize=(10, 8))
         sns.heatmap(corr, annot=True, cmap="coolwarm")
         st.pyplot(plt)
+
+    def get_scatterplot(self, col1, col2):
+        df_number = self.df.select_dtypes(include=[np.number, 'datetime']).drop('ID', axis=1)
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(data=df_number, x=col1, y=col2, palette='viridis')
+        plt.title(f"Relación entre {col1} y {col2}")
+        plt.xlabel(col1)
+        plt.ylabel(col2)
+        st.pyplot(plt)
