@@ -13,6 +13,19 @@ class DataAnalysis():
         self.df = pd.read_csv(self.nombre).fillna('No Especificado')
         self.df['Name'] = self.df['Name'].astype(str)
         self.df['Age'] = pd.to_numeric(self.df['Age'], errors='coerce')
+        self.df['Salary'] = pd.to_numeric(self.df['Salary'], errors='coerce')
+        mean_salary = self.get_mean('Salary')
+        self.df['Department'] = self.df['Department'].astype(str)
+        self.df['Join_Date'] = pd.to_datetime(self.df['Join_Date'], format='mixed', yearfirst=True)
+        self.df['Location'] = self.df['Location'].astype(str)
+
+    def get_Df_vanilla(self):
+        return self.df
+
+    def get_Df_normalizada(self):
+        self.df = pd.read_csv(self.nombre).fillna('No Especificado')
+        self.df['Name'] = self.df['Name'].astype(str)
+        self.df['Age'] = pd.to_numeric(self.df['Age'], errors='coerce')
         mean_Age = self.get_mean('Age')
         self.df['Age'] = self.df['Age'].fillna(mean_Age).astype(int)
         self.df['Age'] = self.filtrar_edad()
@@ -22,13 +35,9 @@ class DataAnalysis():
         self.df['Department'] = self.df['Department'].astype(str)
         self.df['Join_Date'] = pd.to_datetime(self.df['Join_Date'], format='mixed', yearfirst=True)
         self.df['Location'] = self.df['Location'].astype(str)
-
-
-
-    def get_Df(self):
         return self.df
 
-    def get_name_columnas(self):       
+    def get_name_columnas(self):
         return self.df.columns.values
 
     def set_table(self,agregar):
