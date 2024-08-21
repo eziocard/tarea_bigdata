@@ -108,3 +108,6 @@ if opcion != 'Ninguna':
 
 else:
     st.write("Por favor seleccione como Quiere visualizar la Base de datos")
+
+
+'''hola me llamo ricardo '''
