@@ -21,7 +21,7 @@ with tabs_1[0]:
     )
 
     if opcion == 'Version Vanilla':
-        st.dataframe(tabla.get_Df_vanilla().set_index("ID"))
+        st.dataframe(tabla.get_Df().set_index("ID"))
     elif opcion == 'Version Normalizada':
         st.dataframe(tabla.get_Df_normalizada().set_index("ID"))
 if opcion != 'Ninguna':
